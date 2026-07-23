@@ -1,26 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-
-const contactLinks = [
-  {
-    href: "https://github.com/zebso",
-    icon: "github",
-    label: "GitHub",
-    variant: "secondary"
-  },
-  {
-    href: "https://x.com/zebso",
-    icon: "x",
-    label: "",
-    variant: "secondary"
-  },
-  {
-    href: "mailto:hello@zebso.dev",
-    icon: "email",
-    label: "Email",
-    variant: "primary"
-  }
-] as const;
+import { contactLinks } from "@/data/contactLinks";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -52,7 +32,7 @@ export default function ContactPage() {
                 className="buttonIcon"
                 data-icon={link.icon}
               />
-              {link.label ? <span>{link.label}</span> : ''}
+              { link.label ? <span>{link.label}</span> : '' }
             </ButtonLink>
           ))}
         </div>

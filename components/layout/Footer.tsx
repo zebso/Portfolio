@@ -1,20 +1,30 @@
+import Image from "next/image";
 import Link from "next/link";
-
-const links = [
-  { href: "https://github.com/zebso", label: "GitHub" },
-  { href: "https://x.com/zebso", label: "X" },
-  { href: "mailto:hello@zebso.dev", label: "Email" }
-];
+import { contactLinks } from "@/data/contactLinks";
 
 export function Footer() {
   return (
     <footer className="siteFooter">
       <div className="container footerInner">
-        <p>Zebso</p>
+        <div className="footerBrand">
+          <Image
+            alt="Zebso"
+            className="brandIcon"
+            height={32}
+            src="/icons/user.png"
+            width={32}
+          />
+          <p>Zebso</p>
+        </div>
         <nav aria-label="Footer links">
-          {links.map((link) => (
-            <Link href={link.href} key={link.href}>
-              {link.label}
+          {contactLinks.map((link) => (
+            <Link className="footerContactLink" href={link.href} key={link.href}>
+              <span
+                aria-hidden="true"
+                className="buttonIcon footerContactIcon"
+                data-icon={link.icon}
+              />
+              {link.label ? <span>{link.label}</span> : null}
             </Link>
           ))}
         </nav>
