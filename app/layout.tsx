@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getContent } from "@/data/content";
 import { getLocale } from "@/i18n/server";
 
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const content = getContent(locale);
@@ -41,6 +42,9 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       locale: locale === "ja" ? "ja_JP" : "en_US",
       type: "website"
+    },
+    verification: {
+      google: "9odtnXKn_kEBJZvzRh5wiFoRGhZbmKf2aTZcMFW4m2s",
     }
   };
 }
