@@ -1,21 +1,35 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ProjectGrid } from "@/features/portfolio/ProjectGrid";
-import { featuredProjects } from "@/data/projects";
+import type { PortfolioContent } from "@/data/content";
 
-export function FeaturedProjects() {
+type FeaturedProjectsProps = {
+  common: PortfolioContent["common"];
+  content: PortfolioContent["home"]["featured"];
+  projects: PortfolioContent["projects"];
+};
+
+export function FeaturedProjects({
+  common,
+  content,
+  projects
+}: FeaturedProjectsProps) {
   return (
     <section className="section">
       <div className="container">
         <header className="sectionHeader" data-reveal>
           <div>
-            <p className="sectionKicker">Featured Projects</p>
-            <h2 className="sectionTitle">Work that explains the process.</h2>
+            <p className="sectionKicker">{content.kicker}</p>
+            <h2 className="sectionTitle">{content.title}</h2>
           </div>
           <ButtonLink href="/projects" variant="ghost">
-            All projects
+            {content.action}
           </ButtonLink>
         </header>
-        <ProjectGrid projects={featuredProjects} revealCards />
+        <ProjectGrid
+          common={common}
+          projects={projects.slice(0, 3)}
+          revealCards
+        />
       </div>
     </section>
   );

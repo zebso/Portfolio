@@ -1,11 +1,16 @@
 type ProjectImageProps = {
   title: string;
   status: string;
+  previewLabel: string;
 };
 
-export function ProjectImage({ title, status }: ProjectImageProps) {
+export function ProjectImage({
+  title,
+  status,
+  previewLabel
+}: ProjectImageProps) {
   return (
-    <div className="projectImage" aria-label={`${title} interface preview`}>
+    <div className="projectImage" aria-label={`${title} ${previewLabel}`}>
       <div className="projectImageTop">
         <span />
         <span />

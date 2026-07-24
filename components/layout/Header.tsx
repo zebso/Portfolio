@@ -5,9 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { navItems } from "@/data/navigation";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import type { PortfolioContent } from "@/data/content";
+import type { Locale } from "@/i18n/config";
 
-export function Header() {
+type HeaderProps = {
+  locale: Locale;
+  common: PortfolioContent["common"];
+};
+
+export function Header({ locale, common }: HeaderProps) {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const [menuState, setMenuState] = useState({
@@ -55,7 +62,7 @@ export function Header() {
         <Link
           className="brandLink"
           href="/"
-          aria-label="Zebso home"
+          aria-label={common.brandHomeLabel}
           onClick={closeMenu}
         >
           <Image
@@ -68,7 +75,9 @@ export function Header() {
           <span>Zebso</span>
         </Link>
         <button
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={
+            menuOpen ? common.closeMenuLabel : common.openMenuLabel
+          }
           aria-controls="primary-navigation"
           aria-expanded={menuOpen}
           className="menuButton"
@@ -84,12 +93,12 @@ export function Header() {
           )}
         </button>
         <nav
-          aria-label="Primary navigation"
+          aria-label={common.primaryNavigationLabel}
           className="siteNav"
           data-open={menuOpen}
           id="primary-navigation"
         >
-          {navItems.map((item) => {
+          {common.navigation.map((item) => {
             const isActive =
               item.href === "/"
                 ? pathname === "/"
@@ -108,11 +117,20 @@ export function Header() {
               </Link>
             );
           })}
+          <LanguageSwitcher
+            labels={{
+              group: common.languageLabel,
+              english: common.englishLabel,
+              japanese: common.japaneseLabel
+            }}
+            locale={locale}
+            onChange={closeMenu}
+          />
         </nav>
       </div>
       <button
         aria-hidden={!menuOpen}
-        aria-label="Close menu"
+        aria-label={common.closeMenuLabel}
         className="menuBackdrop"
         data-open={menuOpen}
         onClick={closeMenu}

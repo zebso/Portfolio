@@ -1,31 +1,35 @@
 import type { Metadata } from "next";
-import { nowItems } from "@/data/now";
 import { Card } from "@/components/ui/Card";
+import { getContent } from "@/data/content";
+import { createPageMetadata } from "@/i18n/metadata";
+import { getLocale } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Now",
-  description: "What Zebso is building, learning, reading, and thinking about now.",
-  alternates: {
-    canonical: "/now"
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return createPageMetadata(
+    locale,
+    "/now",
+    getContent(locale).metadata.now
+  );
+}
 
-export default function NowPage() {
+export default async function NowPage() {
+  const locale = await getLocale();
+  const content = getContent(locale);
+  const page = content.pages.now;
+
   return (
     <section className="section">
       <div className="container">
         <header className="sectionHeader" data-reveal>
           <div>
-            <p className="eyebrow">Now</p>
-            <h1 className="sectionTitle">Current work, kept lightweight.</h1>
-            <p className="sectionText">
-              A small snapshot of what is active right now. This page is meant
-              to change as the work changes.
-            </p>
+            <p className="eyebrow">{page.eyebrow}</p>
+            <h1 className="sectionTitle">{page.title}</h1>
+            <p className="sectionText">{page.text}</p>
           </div>
         </header>
         <div className="grid">
-          {nowItems.map((item) => (
+          {content.nowItems.map((item) => (
             <Card
               className="span-3"
               description={item.text}

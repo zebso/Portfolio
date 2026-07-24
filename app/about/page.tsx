@@ -1,49 +1,64 @@
 import type { Metadata } from "next";
 import { Card } from "@/components/ui/Card";
 import { TagList } from "@/components/ui/TagList";
+import { getContent } from "@/data/content";
+import { createPageMetadata } from "@/i18n/metadata";
+import { getLocale } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "A short introduction to the person behind Zebso.",
-  alternates: {
-    canonical: "/about"
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return createPageMetadata(
+    locale,
+    "/about",
+    getContent(locale).metadata.about
+  );
+}
 
-const skills = ["Product thinking", "React", "TypeScript", "UI design", "AI tools"];
-const tools = ["Next.js", "Figma", "GitHub", "VS Code", "OpenAI"];
+export default async function AboutPage() {
+  const locale = await getLocale();
+  const content = getContent(locale);
+  const page = content.pages.about;
 
-export default function AboutPage() {
   return (
     <section className="section">
       <div className="container">
         <header className="sectionHeader" data-reveal>
           <div>
-            <p className="eyebrow">About</p>
-            <h1 className="sectionTitle">Building with care and curiosity.</h1>
-            <p className="sectionText">
-              Zebso is a developer focused on making small, useful products
-              with clear interfaces and understandable systems.
-            </p>
+            <p className="eyebrow">{page.eyebrow}</p>
+            <h1 className="sectionTitle">{page.title}</h1>
+            <p className="sectionText">{page.text}</p>
           </div>
         </header>
         <div className="grid">
           <Card
             className="span-6"
-            title="Philosophy"
-            description="Good products feel calm because the difficult decisions have already been made. The work is to keep learning, keep simplifying, and keep shipping honest improvements."
+            title={page.philosophyTitle}
+            description={page.philosophyText}
           />
           <Card
             className="span-6"
-            title="Timeline"
-            description="The current chapter is focused on Hugg!, AI-assisted product workflows, and turning small experiments into durable systems."
+            title={page.timelineTitle}
+            description={page.timelineText}
           />
-          <Card className="span-6" title="Skills" description="Areas that shape the work.">
-            <TagList tags={skills} />
+          <Card
+            className="span-6"
+            title={page.skillsTitle}
+            description={page.skillsText}
+          >
+            <TagList
+              ariaLabel={content.common.tagsLabel}
+              tags={page.skills}
+            />
           </Card>
-          <Card className="span-6" title="Tools" description="Tools used to think, design, and build.">
-            <TagList tags={tools} />
+          <Card
+            className="span-6"
+            title={page.toolsTitle}
+            description={page.toolsText}
+          >
+            <TagList
+              ariaLabel={content.common.tagsLabel}
+              tags={page.tools}
+            />
           </Card>
         </div>
       </div>

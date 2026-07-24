@@ -1,31 +1,34 @@
 import type { Metadata } from "next";
 import { ProjectGrid } from "@/features/portfolio/ProjectGrid";
-import { projects } from "@/data/projects";
+import { getContent } from "@/data/content";
+import { createPageMetadata } from "@/i18n/metadata";
+import { getLocale } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Products and case studies showing how Zebso approaches problems, trade-offs, and implementation.",
-  alternates: {
-    canonical: "/projects"
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return createPageMetadata(
+    locale,
+    "/projects",
+    getContent(locale).metadata.projects
+  );
+}
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const locale = await getLocale();
+  const content = getContent(locale);
+  const page = content.pages.projects;
+
   return (
     <section className="section">
       <div className="container">
         <header className="sectionHeader" data-reveal>
           <div>
-            <p className="eyebrow">Projects</p>
-            <h1 className="sectionTitle">Products tell the story.</h1>
-            <p className="sectionText">
-              A focused collection of product work, experiments that became
-              systems, and notes from the decisions behind them.
-            </p>
+            <p className="eyebrow">{page.eyebrow}</p>
+            <h1 className="sectionTitle">{page.title}</h1>
+            <p className="sectionText">{page.text}</p>
           </div>
         </header>
-        <ProjectGrid projects={projects} />
+        <ProjectGrid common={content.common} projects={content.projects} />
       </div>
     </section>
   );

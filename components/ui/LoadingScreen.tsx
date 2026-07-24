@@ -10,7 +10,11 @@ const exitFallbackDuration = 350;
 
 type LoadingState = "loading" | "exiting" | "complete";
 
-export function LoadingScreen() {
+type LoadingScreenProps = {
+  label: string;
+};
+
+export function LoadingScreen({ label }: LoadingScreenProps) {
   const [loadingState, setLoadingState] =
     useState<LoadingState>("loading");
 
@@ -95,7 +99,7 @@ export function LoadingScreen() {
       className="loadingScreen"
       data-loading-state={loadingState}
       role="status"
-      aria-label="Loading Zebso"
+      aria-label={label}
       onTransitionEnd={(event) => {
         if (
           loadingState === "exiting" &&

@@ -1,33 +1,36 @@
 import type { Metadata } from "next";
-import { experiments } from "@/data/experiments";
 import { Card } from "@/components/ui/Card";
 import { TagList } from "@/components/ui/TagList";
+import { getContent } from "@/data/content";
+import { createPageMetadata } from "@/i18n/metadata";
+import { getLocale } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Experiments",
-  description:
-    "Small prototypes and technical explorations from Zebso.",
-  alternates: {
-    canonical: "/experiments"
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return createPageMetadata(
+    locale,
+    "/experiments",
+    getContent(locale).metadata.experiments
+  );
+}
 
-export default function ExperimentsPage() {
+export default async function ExperimentsPage() {
+  const locale = await getLocale();
+  const content = getContent(locale);
+  const page = content.pages.experiments;
+
   return (
     <section className="section">
       <div className="container">
         <header className="sectionHeader" data-reveal>
           <div>
-            <p className="eyebrow">Experiments</p>
-            <h1 className="sectionTitle">Ideas before they become products.</h1>
-            <p className="sectionText">
-              Lightweight explorations around AI, interfaces, and product
-              mechanics. Some will grow. Some are simply notes from the work.
-            </p>
+            <p className="eyebrow">{page.eyebrow}</p>
+            <h1 className="sectionTitle">{page.title}</h1>
+            <p className="sectionText">{page.text}</p>
           </div>
         </header>
         <div className="grid">
-          {experiments.map((experiment) => (
+          {content.experiments.map((experiment) => (
             <Card
               className="span-4"
               description={experiment.description}
@@ -35,7 +38,10 @@ export default function ExperimentsPage() {
               meta={experiment.status}
               title={experiment.title}
             >
-              <TagList tags={experiment.tags} />
+              <TagList
+                ariaLabel={content.common.tagsLabel}
+                tags={experiment.tags}
+              />
             </Card>
           ))}
         </div>

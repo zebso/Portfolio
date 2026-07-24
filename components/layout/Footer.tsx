@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { contactLinks } from "@/data/contactLinks";
+import type { PortfolioContent } from "@/data/content";
 
-export function Footer() {
+type FooterProps = {
+  common: PortfolioContent["common"];
+};
+
+export function Footer({ common }: FooterProps) {
   return (
     <footer className="siteFooter">
       <div className="container footerInner">
@@ -16,7 +21,7 @@ export function Footer() {
           />
           <p>Zebso</p>
         </div>
-        <nav aria-label="Footer links">
+        <nav aria-label={common.footerLinksLabel}>
           {contactLinks.map((link) => (
             <Link
               aria-label={link.iconOnly ? link.label : undefined}

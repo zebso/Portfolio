@@ -1,6 +1,11 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import type { PortfolioContent } from "@/data/content";
 
-export function Hero() {
+type HeroProps = {
+  content: PortfolioContent["home"]["hero"];
+};
+
+export function Hero({ content }: HeroProps) {
   return (
     <section className="hero">
       <div className="container heroInner">
@@ -9,31 +14,27 @@ export function Hero() {
           data-reveal
           data-reveal-delay="0"
         >
-          <p className="eyebrow">Zebso</p>
-          <h1>Building calm products with clear thinking.</h1>
-          <p>
-            Zebso is a product-minded developer exploring useful interfaces, AI
-            workflows, and small systems that can grow without becoming messy.
-          </p>
+          <p className="eyebrow">{content.eyebrow}</p>
+          <h1>{content.title}</h1>
+          <p>{content.text}</p>
           <div className="heroActions">
-            <ButtonLink href="/projects">View projects</ButtonLink>
+            <ButtonLink href="/projects">
+              {content.projectsAction}
+            </ButtonLink>
             <ButtonLink href="/now" variant="secondary">
-              Current focus
+              {content.focusAction}
             </ButtonLink>
           </div>
         </div>
         <aside
           className="heroPanel"
-          aria-label="Current product focus"
+          aria-label={content.panelLabel}
           data-reveal
           data-reveal-delay="1"
         >
-          <p className="cardMeta">Current focus</p>
-          <h2>Hugg!</h2>
-          <p>
-            A focused product study around warm, lightweight digital
-            interactions.
-          </p>
+          <p className="cardMeta">{content.panelMeta}</p>
+          <h2>{content.panelTitle}</h2>
+          <p>{content.panelText}</p>
         </aside>
       </div>
     </section>

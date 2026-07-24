@@ -2,13 +2,16 @@ import type { Project } from "@/types/portfolio";
 import { ProjectImage } from "@/components/ui/ProjectImage";
 import { TagList } from "@/components/ui/TagList";
 import { Card } from "@/components/ui/Card";
+import type { PortfolioContent } from "@/data/content";
 
 type ProjectGridProps = {
+  common: PortfolioContent["common"];
   projects: Project[];
   revealCards?: boolean;
 };
 
 export function ProjectGrid({
+  common,
   projects,
   revealCards = false
 }: ProjectGridProps) {
@@ -24,8 +27,12 @@ export function ProjectGrid({
           revealDelay={revealCards ? index : undefined}
           title={project.title}
         >
-          <ProjectImage title={project.title} status={project.status} />
-          <TagList tags={project.technologies} />
+          <ProjectImage
+            previewLabel={common.interfacePreviewLabel}
+            status={project.status}
+            title={project.title}
+          />
+          <TagList ariaLabel={common.tagsLabel} tags={project.technologies} />
         </Card>
       ))}
     </div>

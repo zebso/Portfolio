@@ -2,22 +2,19 @@ import type { Project } from "@/types/portfolio";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ProjectImage } from "@/components/ui/ProjectImage";
 import { TagList } from "@/components/ui/TagList";
+import type { PortfolioContent } from "@/data/content";
 
 type ProjectDetailProps = {
+  common: PortfolioContent["common"];
+  content: PortfolioContent["projectDetail"];
   project: Project;
 };
 
-const sections = [
-  ["Overview", "overview"],
-  ["Problem", "problem"],
-  ["Research", "research"],
-  ["Design", "design"],
-  ["Development", "development"],
-  ["Result", "result"],
-  ["Reflection", "reflection"]
-] as const;
-
-export function ProjectDetail({ project }: ProjectDetailProps) {
+export function ProjectDetail({
+  common,
+  content,
+  project
+}: ProjectDetailProps) {
   return (
     <>
       <section className="projectHero">
@@ -28,35 +25,44 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             <p>{project.tagline}</p>
             <div className="heroActions">
               {project.demo ? (
-                <ButtonLink href={project.demo}>Open demo</ButtonLink>
+                <ButtonLink href={project.demo}>
+                  {content.openDemo}
+                </ButtonLink>
               ) : null}
               <ButtonLink href={project.repository} variant="secondary">
-                Repository
+                {content.repository}
               </ButtonLink>
             </div>
           </div>
-          <ProjectImage title={project.title} status={project.status} />
+          <ProjectImage
+            previewLabel={common.interfacePreviewLabel}
+            status={project.status}
+            title={project.title}
+          />
         </div>
       </section>
       <section className="section">
         <div className="container projectMetaGrid">
           <div>
-            <p className="cardMeta">Tags</p>
-            <TagList tags={project.tags} />
+            <p className="cardMeta">{content.tags}</p>
+            <TagList ariaLabel={common.tagsLabel} tags={project.tags} />
           </div>
           <div>
-            <p className="cardMeta">Technologies</p>
-            <TagList tags={project.technologies} />
+            <p className="cardMeta">{content.technologies}</p>
+            <TagList
+              ariaLabel={content.technologies}
+              tags={project.technologies}
+            />
           </div>
           <div>
-            <p className="cardMeta">Updated</p>
+            <p className="cardMeta">{content.updated}</p>
             <p className="metaValue">{project.updatedAt}</p>
           </div>
         </div>
       </section>
       <section className="section">
         <div className="container caseStudy">
-          {sections.map(([title, key]) => (
+          {content.sections.map(({ title, key }) => (
             <article className="caseStudySection" key={key}>
               <h2>{title}</h2>
               <p>{project[key]}</p>

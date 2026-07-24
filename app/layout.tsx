@@ -4,50 +4,56 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { getContent } from "@/data/content";
+import { getLocale } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://zebso.dev"),
-  title: {
-    default: "Zebso",
-    template: "%s | Zebso"
-  },
-  description:
-    "A calm portfolio about how Zebso thinks, designs, and builds products.",
-  openGraph: {
-    title: "Zebso",
-    description:
-      "A calm portfolio about how Zebso thinks, designs, and builds products.",
-    url: "https://zebso.dev",
-    siteName: "Zebso",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Zebso portfolio"
-      }
-    ],
-    locale: "en_US",
-    type: "website"
-  },
-  alternates: {
-    canonical: "/"
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const content = getContent(locale);
+  const metadata = content.metadata.site;
 
-export default function RootLayout({
+  return {
+    metadataBase: new URL("https://zebso.dev"),
+    title: {
+      default: metadata.title,
+      template: `%s | ${metadata.title}`
+    },
+    description: metadata.description,
+    openGraph: {
+      title: metadata.title,
+      description: metadata.description,
+      url: "https://zebso.dev",
+      siteName: "Zebso",
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: "Zebso portfolio"
+        }
+      ],
+      locale: locale === "ja" ? "ja_JP" : "en_US",
+      type: "website"
+    }
+  };
+}
+
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const content = getContent(locale);
+
   return (
     <html
-      lang="en"
+      lang={locale}
       data-app-loading="true"
       data-reveal-ready="true"
     >
       <body>
-        <LoadingScreen />
+        <LoadingScreen label={content.common.loadingLabel} />
         <ScrollReveal />
         <noscript>
           <style>{`
@@ -66,9 +72,9 @@ export default function RootLayout({
           `}</style>
         </noscript>
         <div className="page-shell">
-          <Header />
+          <Header common={content.common} locale={locale} />
           <main className="site-main">{children}</main>
-          <Footer />
+          <Footer common={content.common} />
         </div>
       </body>
     </html>
