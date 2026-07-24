@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 
-const siteUrl = "https://zebso.dev";
+const siteUrl = "https://zebso.vercel.app";
 
 const staticRoutes = [
   "",

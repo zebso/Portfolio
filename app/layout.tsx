@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadata = content.metadata.site;
 
   return {
-    metadataBase: new URL("https://zebso.dev"),
+    metadataBase: new URL("https://zebso.vercel.app"),
     title: {
       default: metadata.title,
       template: `%s | ${metadata.title}`
@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: metadata.title,
       description: metadata.description,
-      url: "https://zebso.dev",
+      url: "https://zebso.vercel.app",
       siteName: "Zebso",
       images: [
         {
