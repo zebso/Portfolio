@@ -18,13 +18,18 @@ export function Footer() {
         </div>
         <nav aria-label="Footer links">
           {contactLinks.map((link) => (
-            <Link className="footerContactLink" href={link.href} key={link.href}>
+            <Link
+              aria-label={link.iconOnly ? link.label : undefined}
+              className="footerContactLink"
+              href={link.href}
+              key={link.href}
+            >
               <span
                 aria-hidden="true"
                 className="buttonIcon footerContactIcon"
                 data-icon={link.icon}
               />
-              {link.label ? <span>{link.label}</span> : null}
+              {!link.iconOnly ? <span>{link.label}</span> : null}
             </Link>
           ))}
         </nav>

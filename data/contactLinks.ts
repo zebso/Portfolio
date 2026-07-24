@@ -2,18 +2,21 @@ export const contactLinks = [
   {
     href: "https://github.com/zebso",
     icon: "github",
+    iconOnly: false,
     label: "GitHub",
     variant: "secondary"
   },
   {
-    href: "https://x.com/zebso",
+    href: "https://x.com/_zebso",
     icon: "x",
-    label: "",
+    iconOnly: true,
+    label: "X",
     variant: "secondary"
   },
   {
-    href: "mailto:hello@zebso.dev",
+    href: "mailto:zebso128@gmail.com",
     icon: "email",
+    iconOnly: false,
     label: "Email",
     variant: "primary"
   }

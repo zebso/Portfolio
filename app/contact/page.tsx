@@ -26,13 +26,18 @@ export default function ContactPage() {
         </header>
         <div className="contactLinks" aria-label="Contact links">
           {contactLinks.map((link) => (
-            <ButtonLink href={link.href} key={link.href} variant={link.variant}>
+            <ButtonLink
+              ariaLabel={link.iconOnly ? link.label : undefined}
+              href={link.href}
+              key={link.href}
+              variant={link.variant}
+            >
               <span
                 aria-hidden="true"
                 className="buttonIcon"
                 data-icon={link.icon}
               />
-              { link.label ? <span>{link.label}</span> : '' }
+              {!link.iconOnly ? <span>{link.label}</span> : null}
             </ButtonLink>
           ))}
         </div>

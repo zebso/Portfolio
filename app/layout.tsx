@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -40,9 +41,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-app-loading="true"
+      data-reveal-ready="true"
+    >
       <body>
+        <LoadingScreen />
         <ScrollReveal />
+        <noscript>
+          <style>{`
+            html[data-app-loading="true"] {
+              overflow: auto;
+            }
+
+            .loadingScreen {
+              display: none;
+            }
+
+            [data-reveal] {
+              opacity: 1 !important;
+              transform: none !important;
+            }
+          `}</style>
+        </noscript>
         <div className="page-shell">
           <Header />
           <main className="site-main">{children}</main>
