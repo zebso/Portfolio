@@ -1,0 +1,156 @@
+html[data-app-loading="true"] {
+  overflow: hidden;
+}
+
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--background);
+  opacity: 1;
+  transition: opacity 250ms ease-out;
+}
+
+.loadingScreen[data-loading-state="exiting"] {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.loadingScreen[data-loading-state="exiting"] .loadingContent {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.96);
+}
+
+.loadingContent {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  transition:
+    opacity 250ms ease-out,
+    transform 250ms ease-out;
+}
+
+.loadingLogoReveal {
+  display: block;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 50%;
+  animation: loading-logo-reveal 520ms ease-out both;
+}
+
+.loadingLogo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  animation: loading-logo-settle 520ms ease-out both;
+}
+
+.loadingBrand {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  animation: loading-brand-in 360ms 280ms ease-out both;
+}
+
+[data-reveal-ready="true"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
+  transition-delay: 0ms;
+  will-change: opacity, transform;
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-delay="1"] {
+  transition-delay: 80ms;
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-delay="2"] {
+  transition-delay: 160ms;
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-delay="3"] {
+  transition-delay: 240ms;
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-state="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+@keyframes mobile-nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading-logo-reveal {
+  from {
+    clip-path: inset(100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes loading-logo-settle {
+  from {
+    transform: translateY(8px) scale(1.08);
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loading-brand-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loadingScreen,
+  .loadingContent,
+  .loadingLogoReveal,
+  .loadingLogo,
+  .loadingBrand {
+    transition: none;
+    animation: none;
+  }
+
+  [data-reveal-ready="true"] [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

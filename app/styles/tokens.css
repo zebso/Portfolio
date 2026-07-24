@@ -1,0 +1,20 @@
+:root {
+  --background: #0b0b0b;
+  --text-primary: #ffffff;
+  --surface: #141414;
+  --border: #2a2a2a;
+  --text-secondary: #a0a0a0;
+  --text-muted: #707070;
+  --accent: #d8d8d8;
+  --focus: #ffffff;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+  --container: 1120px;
+}
