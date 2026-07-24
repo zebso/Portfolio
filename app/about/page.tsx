@@ -18,7 +18,7 @@ export default function AboutPage() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="eyebrow">About</p>
             <h1 className="sectionTitle">Building with care and curiosity.</h1>

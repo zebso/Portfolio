@@ -14,7 +14,7 @@ export default function NowPage() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="eyebrow">Now</p>
             <h1 className="sectionTitle">Current work, kept lightweight.</h1>

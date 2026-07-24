@@ -16,7 +16,7 @@ export default function WritingPage() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="eyebrow">Writing</p>
             <h1 className="sectionTitle">Useful notes, not noise.</h1>

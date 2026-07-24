@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="eyebrow">Contact</p>
             <h1 className="sectionTitle">Start with a clear note.</h1>

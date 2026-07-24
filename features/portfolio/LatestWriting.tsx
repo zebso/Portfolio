@@ -6,7 +6,7 @@ export function LatestWriting() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="sectionKicker">Latest Writing</p>
             <h2 className="sectionTitle">Notes from the work.</h2>
@@ -16,13 +16,14 @@ export function LatestWriting() {
           </ButtonLink>
         </header>
         <div className="grid">
-          {writingPosts.slice(0, 3).map((post) => (
+          {writingPosts.slice(0, 3).map((post, index) => (
             <Card
               className="span-6"
               description={post.excerpt}
               href={post.href}
               key={post.title}
               meta={`${post.category} / ${post.publishedAt}`}
+              revealDelay={index}
               title={post.title}
             />
           ))}

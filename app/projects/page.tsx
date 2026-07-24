@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="eyebrow">Projects</p>
             <h1 className="sectionTitle">Products tell the story.</h1>

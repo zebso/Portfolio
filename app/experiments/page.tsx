@@ -16,7 +16,7 @@ export default function ExperimentsPage() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="eyebrow">Experiments</p>
             <h1 className="sectionTitle">Ideas before they become products.</h1>

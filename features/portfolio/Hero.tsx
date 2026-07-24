@@ -4,7 +4,11 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="container heroInner">
-        <div className="heroContent">
+        <div
+          className="heroContent"
+          data-reveal
+          data-reveal-delay="0"
+        >
           <p className="eyebrow">Zebso</p>
           <h1>Building calm products with clear thinking.</h1>
           <p>
@@ -18,7 +22,12 @@ export function Hero() {
             </ButtonLink>
           </div>
         </div>
-        <aside className="heroPanel" aria-label="Current product focus">
+        <aside
+          className="heroPanel"
+          aria-label="Current product focus"
+          data-reveal
+          data-reveal-delay="1"
+        >
           <p className="cardMeta">Current focus</p>
           <h2>Hugg!</h2>
           <p>

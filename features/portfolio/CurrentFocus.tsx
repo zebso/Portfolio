@@ -5,19 +5,20 @@ export function CurrentFocus() {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader">
+        <header className="sectionHeader" data-reveal>
           <div>
             <p className="sectionKicker">Current Focus</p>
             <h2 className="sectionTitle">What is being shaped now.</h2>
           </div>
         </header>
         <div className="grid">
-          {nowItems.slice(0, 3).map((item) => (
+          {nowItems.slice(0, 3).map((item, index) => (
             <Card
               className="span-4"
               description={item.text}
               key={item.label}
               meta={item.label}
+              revealDelay={index}
               title={item.title}
             />
           ))}

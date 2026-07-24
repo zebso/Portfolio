@@ -8,6 +8,7 @@ type CardProps = {
   href?: string;
   children?: ReactNode;
   className?: string;
+  revealDelay?: number;
 };
 
 export function Card({
@@ -16,8 +17,17 @@ export function Card({
   meta,
   href,
   children,
-  className
+  className,
+  revealDelay
 }: CardProps) {
+  const revealAttributes =
+    revealDelay === undefined
+      ? {}
+      : {
+          "data-reveal": true,
+          "data-reveal-delay": revealDelay
+        };
+
   const content = (
     <>
       {meta ? <p className="cardMeta">{meta}</p> : null}
@@ -29,11 +39,19 @@ export function Card({
 
   if (href) {
     return (
-      <Link className={`card cardLink ${className ?? ""}`} href={href}>
+      <Link
+        className={`card cardLink ${className ?? ""}`}
+        href={href}
+        {...revealAttributes}
+      >
         {content}
       </Link>
     );
   }
 
-  return <article className={`card ${className ?? ""}`}>{content}</article>;
+  return (
+    <article className={`card ${className ?? ""}`} {...revealAttributes}>
+      {content}
+    </article>
+  );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zebso.dev"),
@@ -41,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ScrollReveal />
         <div className="page-shell">
           <Header />
           <main className="site-main">{children}</main>
