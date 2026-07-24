@@ -8,6 +8,8 @@ type FooterProps = {
 };
 
 export function Footer({ common }: FooterProps) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="siteFooter">
       <div className="container footerInner">
@@ -19,7 +21,12 @@ export function Footer({ common }: FooterProps) {
             src="/icons/user.png"
             width={32}
           />
-          <p>Zebso</p>
+          <div>
+            <p>Zebso</p>
+            <p className="footerCopyright">
+              &copy; 2026-{currentYear} Zebso All Rights Reserved.
+            </p>
+          </div>
         </div>
         <nav aria-label={common.footerLinksLabel}>
           {contactLinks.map((link) => (

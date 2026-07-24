@@ -19,6 +19,13 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${metadata.title}`
     },
     description: metadata.description,
+    icons: {
+      icon: {
+        url: "/icons/user.png",
+        type: "image/png"
+      },
+      apple: "/icons/user.png"
+    },
     openGraph: {
       title: metadata.title,
       description: metadata.description,
