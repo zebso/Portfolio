@@ -44,6 +44,9 @@ export function Footer({ common }: FooterProps) {
               {!link.iconOnly ? <span>{link.label}</span> : null}
             </Link>
           ))}
+          <Link className="footerContactLink" href="/privacy">
+            {common.privacyLabel}
+          </Link>
         </nav>
       </div>
     </footer>

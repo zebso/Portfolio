@@ -10,7 +10,8 @@ const staticRoutes = [
   "/writing",
   "/now",
   "/about",
-  "/contact"
+  "/contact",
+  "/privacy"
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

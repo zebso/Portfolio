@@ -49,6 +49,7 @@ export type PortfolioContent = {
     loadingLabel: string;
     tagsLabel: string;
     interfacePreviewLabel: string;
+    privacyLabel: string;
   };
   metadata: {
     site: MetadataContent;
@@ -59,6 +60,7 @@ export type PortfolioContent = {
     now: MetadataContent;
     about: MetadataContent;
     contact: MetadataContent;
+    privacy: MetadataContent;
   };
   home: {
     hero: {
@@ -111,6 +113,9 @@ export type PortfolioContent = {
       tools: string[];
     };
     contact: PageHeaderContent;
+    privacy: PageHeaderContent & {
+      items: ContentCard[];
+    };
   };
   projects: Project[];
   experiments: Experiment[];
@@ -284,7 +289,8 @@ const englishContent: PortfolioContent = {
     japaneseLabel: "Japanese",
     loadingLabel: "Loading Zebso",
     tagsLabel: "Tags",
-    interfacePreviewLabel: "interface preview"
+    interfacePreviewLabel: "interface preview",
+    privacyLabel: "Privacy"
   },
   metadata: {
     site: {
@@ -324,6 +330,11 @@ const englishContent: PortfolioContent = {
     contact: {
       title: "Contact",
       description: "Ways to reach Zebso."
+    },
+    privacy: {
+      title: "Privacy",
+      description:
+        "A short privacy notice about cookies and external links on the Zebso portfolio."
     }
   },
   home: {
@@ -426,6 +437,32 @@ const englishContent: PortfolioContent = {
       title: "Start with a clear note.",
       text:
         "For product conversations, collaboration, or feedback, these are the simplest places to reach Zebso."
+    },
+    privacy: {
+      eyebrow: "Privacy",
+      title: "A small, clear privacy note.",
+      text:
+        "This portfolio keeps privacy simple. It does not use advertising cookies, analytics, or hidden tracking.",
+      items: [
+        {
+          meta: "Cookie",
+          title: "Language preference",
+          text:
+            "The site may store a small cookie named zebso_locale when you choose EN or JA. It is used only to remember your language preference for one year."
+        },
+        {
+          meta: "Data",
+          title: "No analytics",
+          text:
+            "This site does not collect analytics data, show ads, or use third-party tracking scripts."
+        },
+        {
+          meta: "Links",
+          title: "External services",
+          text:
+            "Contact links may open services such as GitHub, X, or email. Those services handle data according to their own policies."
+        }
+      ]
     }
   },
   projects,
@@ -478,7 +515,8 @@ const japaneseContent: PortfolioContent = {
     japaneseLabel: "Japanese",
     loadingLabel: "Loading Zebso",
     tagsLabel: "Tags",
-    interfacePreviewLabel: "interface preview"
+    interfacePreviewLabel: "interface preview",
+    privacyLabel: "Privacy"
   },
   metadata: {
     site: {
@@ -518,6 +556,11 @@ const japaneseContent: PortfolioContent = {
     contact: {
       title: "Contact",
       description: "Zebsoへの連絡方法。"
+    },
+    privacy: {
+      title: "Privacy",
+      description:
+        "Zebsoポートフォリオで使うCookieと外部リンクについての短いプライバシー表記。"
     }
   },
   home: {
@@ -641,6 +684,32 @@ const japaneseContent: PortfolioContent = {
       title: "Start with a clear note.",
       text:
         "プロダクトの話、共同制作、フィードバックには、こちらから連絡できます。"
+    },
+    privacy: {
+      eyebrow: "Privacy",
+      title: "A small, clear privacy note.",
+      text:
+        "このポートフォリオでは、プライバシーまわりもできるだけシンプルにしています。広告Cookie、アクセス解析、見えないトラッキングは使っていません。",
+      items: [
+        {
+          meta: "Cookie",
+          title: "Language preference",
+          text:
+            "EN / JAを選んだとき、zebso_locale という小さなCookieを保存することがあります。これは表示言語を1年間覚えておくためだけに使います。"
+        },
+        {
+          meta: "Data",
+          title: "No analytics",
+          text:
+            "このサイトでは、アクセス解析データの収集、広告表示、第三者トラッキングスクリプトの利用は行っていません。"
+        },
+        {
+          meta: "Links",
+          title: "External services",
+          text:
+            "GitHub、X、EmailなどのContactリンクを開くと、外部サービスへ移動します。移動先でのデータの扱いは、それぞれのサービスのポリシーに従います。"
+        }
+      ]
     }
   },
   projects: japaneseProjects,
