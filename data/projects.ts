@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: "Hugg!",
     slug: "hugg",
     description:
-      "A product exploration around warm, lightweight digital interactions and the small details that make an interface feel considered.",
+      "More than a social app. Hugg! is a platform designed to make being together more meaningful. Instead of sharing moments alone, every post begins with people spending time together.",
     status: "In progress",
     year: "2026",
     thumbnail: "/projects/hugg.png",
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     title: "AI Tools Notebook",
     slug: "ai-tools-notebook",
     description:
-      "A working collection of notes and prototypes for using AI as a practical product-building partner.",
+      "I build AI tools that work like a second brain. They help organize ideas, accelerate development, and turn thoughts into products faster.",
     status: "Ongoing",
     year: "2026",
     thumbnail: "/projects/ai-tools-notebook.png",

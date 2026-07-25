@@ -158,10 +158,10 @@ const japaneseProjectCopy: Record<
 > = {
   hugg: {
     description:
-      "温かく軽やかなデジタル体験と、丁寧さを感じさせる細部を探るプロダクト実験。",
-    tagline: "日常の小さな瞬間に、やわらかな操作感を設計する。",
+      "ただのSNSではなく、一緒にいる時間をもっと意味のあるものにするためのプラットフォーム。ひとりで瞬間を共有するのではなく、誰かと過ごすことから投稿が始まります。",
+    tagline: "日常のプロダクト体験に、少しやわらかい操作感を設計する。",
     overview:
-      "Hugg!は、シンプルな操作を騒がしく装飾することなく、少し温かく感じられるものにするためのプロダクト研究です。",
+      "Hugg!は、シンプルな操作を騒がしく飾らずに、少し温かく感じられるものにするためのプロダクト研究です。",
     problem:
       "小さなツールの多くは、機械的すぎるか、遊び心が強すぎます。明快さを保ちながら、個人的な温度を感じられる表現を見つけることが課題です。",
     research:
@@ -177,7 +177,7 @@ const japaneseProjectCopy: Record<
   },
   "ai-tools-notebook": {
     description:
-      "AIを実用的なプロダクト制作の相棒として使うための、ノートとプロトタイプの継続的なコレクション。",
+      "アイデアを整理し、開発を速め、考えをプロダクトへ近づけるための、もう一つの脳のように働くAIツール群。",
     tagline: "AI実験を、役に立つプロダクト制作の習慣へ変える。",
     overview:
       "AI Tools Notebookは、AIツールを使った制作で見つけたパターン、失敗、再利用できるワークフローを記録しています。",
@@ -248,9 +248,9 @@ const japaneseWritingPosts = writingPosts.map((post) => ({
 
 const japaneseNowText: Record<string, string> = {
   Building:
-    "小さなプロダクト体験のために、より温かな操作モデルを探っています。",
+    "Hugg!を通して、一緒にいる時間が少し意味を持つような体験を探っています。",
   Learning:
-    "計画、批評、実装、文章のどこでAIが役立つかを研究しています。",
+    "AIを、考えを整理してプロダクトを早く形にするための相棒として使う方法を試しています。",
   Reading:
     "明快で抑制されたプロダクト画面の事例を集めています。",
   Thinking:
@@ -329,7 +329,7 @@ const englishContent: PortfolioContent = {
   home: {
     hero: {
       eyebrow: "Zebso",
-      title: "Building calm products with clear thinking.",
+      title: "Technology for more meaningful moments.",
       text:
         "Zebso is a product-minded developer exploring useful interfaces, AI workflows, and small systems that can grow without becoming messy.",
       projectsAction: "View projects",
@@ -399,10 +399,10 @@ const englishContent: PortfolioContent = {
       eyebrow: "About",
       title: "Building with care and curiosity.",
       text:
-        "Zebso is a developer focused on making small, useful products with clear interfaces and understandable systems.",
+        "I like building products that solve small problems and create memorable experiences. My goal isn't just to ship software—it's to build something people genuinely enjoy using.",
       philosophyTitle: "Philosophy",
       philosophyText:
-        "Good products feel calm because the difficult decisions have already been made. The work is to keep learning, keep simplifying, and keep shipping honest improvements.",
+        "I don't start with technology. I start with one question: \"How should people feel after using this?\"",
       timelineTitle: "Timeline",
       timelineText:
         "The current chapter is focused on Hugg!, AI-assisted product workflows, and turning small experiments into durable systems.",
@@ -410,10 +410,12 @@ const englishContent: PortfolioContent = {
       skillsText: "Areas that shape the work.",
       skills: [
         "Product thinking",
-        "React",
-        "TypeScript",
-        "UI design",
-        "AI tools"
+        "Building products",
+        "Designing experiences",
+        "Rapid prototyping",
+        "AI-assisted development",
+        "Frontend engineering",
+        "Human-centered thinking"
       ],
       toolsTitle: "Tools",
       toolsText: "Tools used to think, design, and build.",
@@ -487,7 +489,7 @@ const japaneseContent: PortfolioContent = {
     home: {
       title: "Zebso",
       description:
-        "役に立つインターフェース、実験、ツールを作るプロダクト志向のポートフォリオ。"
+        "意味のある時間をつくる技術、インターフェース、AIワークフローを探るポートフォリオ。"
     },
     projects: {
       title: "Projects",
@@ -521,16 +523,16 @@ const japaneseContent: PortfolioContent = {
   home: {
     hero: {
       eyebrow: "Zebso",
-      title: "Building calm products with clear thinking.",
+      title: "Technology for more meaningful moments.",
       text:
-        "Zebsoは、役に立つインターフェース、AIワークフロー、複雑にならず育てられる小さな仕組みを探るプロダクト志向の開発者です。",
+        "Zebsoは、役に立つインターフェース、AIワークフロー、そして複雑になりすぎず育てていける小さな仕組みを探っている開発者です。",
       projectsAction: "View projects",
       focusAction: "Current focus",
       panelLabel: "Current product focus",
       panelMeta: "Current focus",
       panelTitle: "Hugg!",
       panelText:
-        "温かく軽やかなデジタル体験を探る、焦点を絞ったプロダクト研究。"
+        "温かく軽やかなデジタルのやり取りを探る、焦点を絞ったプロダクト研究。"
     },
     featured: {
       kicker: "Featured Projects",
@@ -544,12 +546,12 @@ const japaneseContent: PortfolioContent = {
         {
           meta: "Building",
           title: "Hugg!",
-          text: "小さなプロダクト体験のために、より温かな操作モデルを探っています。"
+          text: "Hugg!を通して、一緒にいる時間が少し意味を持つような体験を探っています。"
         },
         {
           meta: "Learning",
           title: "AI-assisted product work",
-          text: "計画、批評、実装、文章のどこでAIが役立つかを研究しています。"
+          text: "AIを、考えを整理してプロダクトを早く形にするための相棒として使う方法を試しています。"
         },
         {
           meta: "Reading",
@@ -612,21 +614,23 @@ const japaneseContent: PortfolioContent = {
       eyebrow: "About",
       title: "Building with care and curiosity.",
       text:
-        "Zebsoは、明快なインターフェースと理解できる仕組みで、小さく役に立つプロダクトをつくる開発者です。",
+        "小さな問題を解きながら、記憶に残る体験をつくるプロダクトが好きです。ただソフトウェアを出すだけではなく、使っていてちゃんと楽しいと思えるものをつくりたいです。",
       philosophyTitle: "Philosophy",
       philosophyText:
-        "良いプロダクトが静かに感じられるのは、難しい判断がすでに済んでいるからです。学び、単純にし、正直な改善を届け続けます。",
+        "技術から考え始めるのではなく、まず「使ったあとにどんな気持ちが残るべきか」から考えます。",
       timelineTitle: "Timeline",
       timelineText:
         "現在はHugg!、AIと進めるプロダクト制作、小さな実験を長く使える仕組みへ育てることに取り組んでいます。",
       skillsTitle: "Skills",
-      skillsText: "制作を形づくる領域。",
+      skillsText: "つくるものの方向性を決める領域。",
       skills: [
         "Product thinking",
-        "React",
-        "TypeScript",
-        "UI design",
-        "AI tools"
+        "Building products",
+        "Designing experiences",
+        "Rapid prototyping",
+        "AI-assisted development",
+        "Frontend engineering",
+        "Human-centered thinking"
       ],
       toolsTitle: "Tools",
       toolsText: "考え、設計し、つくるために使うツール。",
