@@ -9,7 +9,7 @@ export function CurrentFocus({ content }: CurrentFocusProps) {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader" data-reveal>
+        <header className="sectionHeader" data-reveal data-reveal-variant="heading">
           <div>
             <p className="sectionKicker">{content.kicker}</p>
             <h2 className="sectionTitle">{content.title}</h2>
@@ -23,6 +23,7 @@ export function CurrentFocus({ content }: CurrentFocusProps) {
               key={`${item.meta}-${item.title}`}
               meta={item.meta}
               revealDelay={index}
+              revealVariant="card"
               title={item.title}
             />
           ))}

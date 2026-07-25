@@ -60,28 +60,57 @@ html[data-app-loading="true"] {
 [data-reveal-ready="true"] [data-reveal] {
   opacity: 0;
   transform: translateY(16px);
+  filter: none;
   transition:
     opacity 500ms ease-out,
-    transform 500ms ease-out;
+    transform 500ms ease-out,
+    filter 500ms ease-out;
   transition-delay: 0ms;
-  will-change: opacity, transform;
+  will-change: opacity, transform, filter;
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-variant="hero"] {
+  transform: translateY(24px);
+  filter: blur(8px);
+  transition-duration: 650ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-variant="panel"] {
+  transform: translateY(20px) scale(0.96);
+  transition-duration: 620ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-variant="heading"] {
+  transform: translateY(16px);
+  filter: blur(6px);
+  transition-duration: 560ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal-ready="true"] [data-reveal][data-reveal-variant="card"] {
+  transform: translateY(24px) scale(0.97);
+  transition-duration: 620ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-reveal-ready="true"] [data-reveal][data-reveal-delay="1"] {
-  transition-delay: 80ms;
+  transition-delay: 90ms;
 }
 
 [data-reveal-ready="true"] [data-reveal][data-reveal-delay="2"] {
-  transition-delay: 160ms;
+  transition-delay: 180ms;
 }
 
 [data-reveal-ready="true"] [data-reveal][data-reveal-delay="3"] {
-  transition-delay: 240ms;
+  transition-delay: 270ms;
 }
 
 [data-reveal-ready="true"] [data-reveal][data-reveal-state="visible"] {
   opacity: 1;
   transform: translateY(0);
+  filter: none;
   will-change: auto;
 }
 
@@ -142,6 +171,7 @@ html[data-app-loading="true"] {
   [data-reveal-ready="true"] [data-reveal] {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 

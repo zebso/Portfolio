@@ -10,7 +10,7 @@ export function LatestWriting({ content }: LatestWritingProps) {
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader" data-reveal>
+        <header className="sectionHeader" data-reveal data-reveal-variant="heading">
           <div>
             <p className="sectionKicker">{content.kicker}</p>
             <h2 className="sectionTitle">{content.title}</h2>
@@ -28,6 +28,7 @@ export function LatestWriting({ content }: LatestWritingProps) {
               key={post.title}
               meta={post.meta}
               revealDelay={index}
+              revealVariant="card"
               title={post.title}
             />
           ))}

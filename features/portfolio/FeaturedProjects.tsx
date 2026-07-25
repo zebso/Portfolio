@@ -16,7 +16,7 @@ export function FeaturedProjects({
   return (
     <section className="section">
       <div className="container">
-        <header className="sectionHeader" data-reveal>
+        <header className="sectionHeader" data-reveal data-reveal-variant="heading">
           <div>
             <p className="sectionKicker">{content.kicker}</p>
             <h2 className="sectionTitle">{content.title}</h2>
@@ -29,6 +29,7 @@ export function FeaturedProjects({
           common={common}
           projects={projects.slice(0, 3)}
           revealCards
+          revealVariant="card"
         />
       </div>
     </section>

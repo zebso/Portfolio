@@ -8,12 +8,14 @@ type ProjectGridProps = {
   common: PortfolioContent["common"];
   projects: Project[];
   revealCards?: boolean;
+  revealVariant?: "card";
 };
 
 export function ProjectGrid({
   common,
   projects,
-  revealCards = false
+  revealCards = false,
+  revealVariant
 }: ProjectGridProps) {
   return (
     <div className="grid">
@@ -25,6 +27,7 @@ export function ProjectGrid({
           key={project.slug}
           meta={`${project.status} / ${project.year}`}
           revealDelay={revealCards ? index : undefined}
+          revealVariant={revealCards ? revealVariant : undefined}
           title={project.title}
         >
           <ProjectImage

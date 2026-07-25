@@ -13,6 +13,7 @@ export function Hero({ content }: HeroProps) {
           className="heroContent"
           data-reveal
           data-reveal-delay="0"
+          data-reveal-variant="hero"
         >
           <p className="eyebrow">{content.eyebrow}</p>
           <h1>{content.title}</h1>
@@ -31,6 +32,7 @@ export function Hero({ content }: HeroProps) {
           aria-label={content.panelLabel}
           data-reveal
           data-reveal-delay="1"
+          data-reveal-variant="panel"
         >
           <p className="cardMeta">{content.panelMeta}</p>
           <h2>{content.panelTitle}</h2>

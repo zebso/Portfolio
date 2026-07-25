@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+type RevealVariant = "card" | "heading" | "panel" | "hero";
+
 type CardProps = {
   title: string;
   description: string;
@@ -9,6 +11,7 @@ type CardProps = {
   children?: ReactNode;
   className?: string;
   revealDelay?: number;
+  revealVariant?: RevealVariant;
 };
 
 export function Card({
@@ -18,14 +21,18 @@ export function Card({
   href,
   children,
   className,
-  revealDelay
+  revealDelay,
+  revealVariant
 }: CardProps) {
   const revealAttributes =
     revealDelay === undefined
       ? {}
       : {
           "data-reveal": true,
-          "data-reveal-delay": revealDelay
+          "data-reveal-delay": revealDelay,
+          ...(revealVariant
+            ? { "data-reveal-variant": revealVariant }
+            : {})
         };
 
   const content = (
