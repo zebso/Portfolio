@@ -6,6 +6,14 @@ type MetadataCopy = {
   description: string;
 };
 
+const siteName = "Zebso";
+const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "Zebso portfolio"
+} as const;
+
 export function createPageMetadata(
   locale: Locale,
   path: string,
@@ -21,6 +29,8 @@ export function createPageMetadata(
       title: copy.title,
       description: copy.description,
       url: path,
+      siteName,
+      images: [ogImage],
       locale: locale === "ja" ? "ja_JP" : "en_US",
       type: "website"
     }
